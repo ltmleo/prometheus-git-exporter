@@ -31,7 +31,7 @@ git_project_branch_age = Gauge('git_project_branch_age', 'age of the branch', la
 git_project_branch_contributors_number = Gauge('git_project_branch_contributors_number', 'number of contributors in the branch', labelnames=["project_name", "project_group", "project_url", "branch_name"])
 if __name__ == '__main__':
     # Start up the server to expose the metrics.
-    start_http_server(8000)
+    start_http_server(8000,'0.0.0.0')
     for n in range(5):
         p = Project(f"teste{n}", "loja", f"http://localhost{n}")
         for branch in p.get_branches():
